@@ -19,3 +19,8 @@
     display: flex;
    
 }
+
+.carousel-control-next, 
+.carousel-control-prev {
+    max-width: 5%;
+} 
