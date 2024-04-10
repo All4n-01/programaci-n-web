@@ -8,8 +8,10 @@
 
 .carousel-item{
     flex: 0 0 auto;
-    max-width: 200px;
+    max-width: 97%;
+    padding-right: 50px;
 }
+
 
 .carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
