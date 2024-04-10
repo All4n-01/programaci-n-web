@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap);
+
+.cuerpo{
+    background-color: #F2EBDF;
+}
+
+.carousel-inner{
+    display: flex;
+}
+
+
+
+.carousel-item{
+    flex: 0 0 auto;
+    max-width: 97%;
+    padding-right: 50px;
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev{
+    display: flex;
+   
+}
+
+.carousel-control-next, 
+.carousel-control-prev {
+    max-width: 5%;
+} 
