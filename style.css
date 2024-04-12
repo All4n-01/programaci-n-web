@@ -44,6 +44,19 @@
     max-width: 5%;
 } 
 
+.btnEliminar{
+    display: none;
+}
+
+
+.offcanvas-body {
+    width: 150px; /**/
+    height: 200px; /*  */
+}
+
+.oculto{
+    display: none;
+}
 
 /* titulos */
 
