@@ -79,7 +79,7 @@
 
       <!--CARRUSEL-->
 
-    <div class="container pt-4">
+      <div class="container pt-4">
         <div >
           <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >CATEGORIAS</span>
           <div class="home-line"></div>
@@ -184,6 +184,18 @@
             
           </div>
 
+          <div class="carousel-item ms-5">
+            <div class="card" style="width: 18rem;">
+                <img id="imgBio" src="img categorias/biografias.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
+                <div class="card-body">
+                    <h5 class="card-title">Biografias.</h5>
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('biografias');" class="btn btn-primary" type="button" >
+                        Filtrar
+                    </button>
+                </div>
+              </div>
+            
+          </div>
         </div>
         <button class="anterior carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -263,6 +275,16 @@
             <div class="card-body">
                 <h5 id="titulo5" class="card-title">Terapia para llevar</h5>
                 <button id="btnLibro1"  onclick="agregarAlCarrito('Terapia para llevar', 'img/libro5.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Agregar
+                </button>     
+            </div>
+        </div>
+
+        <div class="card categoria-libro biografias" style="margin: 15px; width: 250px; float:left;">
+            <img id="img6" src="img/libro6.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
+            <div class="card-body">
+                <h5 id="titulo5" class="card-title">Honor y traicion</h5>
+                <button id="btnLibro1"  onclick="agregarAlCarrito('Honor y traicion', 'img/libro6.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                     Agregar
                 </button>     
             </div>
