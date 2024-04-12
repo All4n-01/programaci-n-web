@@ -67,3 +67,12 @@
     height: 300px;
     margin: 10px;
 }
+
+.categoria-libro {
+    display: none;
+}
+
+.cardL{
+    width: 250px;
+    float:left;
+}
