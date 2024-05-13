@@ -14,7 +14,7 @@ $(document).ready(function(){
 
         } else {
             span_i.style.display= 'none'
-            localStorage.setItem("Patente", patente);
+            localStorage.setItem("Imagen", imagen);
         }
 
         var nombre = document.getElementById("marca").value;
@@ -24,7 +24,7 @@ $(document).ready(function(){
             return false;
         } else {
             span_n.style.display= 'none'
-            localStorage.setItem("Marca", marca);  
+            localStorage.setItem("Nombre", nombre);  
         }
 
         var desc = document.getElementById("desc").value
@@ -34,7 +34,7 @@ $(document).ready(function(){
             return false
         } else {
             span_de.style.display= 'none'
-            localStorage.setItem("Modelo", modelo);
+            localStorage.setItem("Desc", desc);
         }
 
         var precio = document.getElementById("precio").value;
@@ -44,7 +44,7 @@ $(document).ready(function(){
             return false;
         } else {  
             span_pre.style.display= 'none'
-            localStorage.setItem("Anio", anio);
+            localStorage.setItem("Precio", precio);
         } 
 
         var in_imagen = document.getElementById("imagen");
