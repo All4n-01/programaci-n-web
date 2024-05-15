@@ -17,7 +17,18 @@ $(document).ready(function(){
             localStorage.setItem("Imagen", imagen);
         }
 
-        var nombre = document.getElementById("marca").value;
+        var id = document.getElementById("id").value;
+        var span_id = document.getElementById("s_id")
+        if (id === '')  {
+            span_id.style.display= 'block'
+            return false;
+
+        } else {
+            span_id.style.display= 'none'
+            localStorage.setItem("Imagen", imagen);
+        }
+
+        var nombre = document.getElementById("nombre").value;
         var span_n = document.getElementById("s_nombre")
         if(nombre === ''){
             span_n.style.display= 'block'
@@ -51,9 +62,11 @@ $(document).ready(function(){
         var in_nombre = document.getElementById("nombre");
         var in_desc = document.getElementById("desc");
         var in_precio = document.getElementById("precio");
+        var in_id = document.getElementById("id");
 
         var libro = {
-            Imagen: in_imagen.value.Imagen, 
+            Imagen: in_imagen.value.Imagen,
+            Id : in_id.value.trim(),
             Nombre : in_nombre.value.trim(), 
             Desc: in_desc.value.trim(),
             Precio: in_precio.value
