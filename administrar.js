@@ -38,6 +38,16 @@ $(document).ready(function(){
             localStorage.setItem("Nombre", nombre);  
         }
 
+        var categoria = document.getElementById("categoria").value;
+        var span_cate = document.getElementById("s_cate")
+        if(categoria === ''){
+            span_cate.style.display= 'block'
+            return false;
+        } else {
+            span_cate.style.display= 'none'
+            localStorage.setItem("Categoria", categoria);  
+        }
+
         var desc = document.getElementById("desc").value
         var span_de = document.getElementById("s_desc");
         if(desc === ''){
@@ -60,23 +70,42 @@ $(document).ready(function(){
 
         var in_imagen = document.getElementById("imagen");
         var in_nombre = document.getElementById("nombre");
+        var in_categoria = document.getElementById("categoria");
         var in_desc = document.getElementById("desc");
         var in_precio = document.getElementById("precio");
         var in_id = document.getElementById("id");
 
-        var libro = {
-            Imagen: in_imagen.value.Imagen,
+
+        var imagenData = document.getElementById("imagen").files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var ImagenUrl = e.target.result;
+            
+          var libro = {
+            Imagen: ImagenUrl ,
             Id : in_id.value.trim(),
             Nombre : in_nombre.value.trim(), 
+            Categoria : in_categoria.value.trim(), 
             Desc: in_desc.value.trim(),
             Precio: in_precio.value
-        };
+            }
 
-        if (libro !== "") { 
-            var listaLIbros = JSON.parse(localStorage.getItem("autos")) || []; 
-            listaLIbros.push(auto);
-            localStorage.setItem("autos", JSON.stringify(listaLIbros)); 
-            Mostrar(); 
-        }
+        var listaLibros = JSON.parse(localStorage.getItem("libros")) || [];
+        listaLibros.push(libro);
+        localStorage.setItem("libros", JSON.stringify(listaLibros));
+
+        in_imagen.value = "";
+        in_nombre.value = "";
+        in_categoria.value = "";
+        in_desc.value = "";
+        in_precio.value = "";
+        in_id.value = "";
+
+        console.log("Libro guardado:", libro);
+
+        };
+        reader.readAsDataURL(imagenData);
+
+        
     });
 });
