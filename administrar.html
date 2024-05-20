@@ -97,6 +97,10 @@
             <input class="form-control" type="text" id="nombre" placeholder="Nombre" aria-label="default input example">
             <span id="s_nombre" style="display: none;">Falta el nombre del libro</span>
             <br>
+            <label for="categoria" class="form-label">Ingrese categoria del libro</label> <br>
+            <input class="form-control" type="text" id="categoria" placeholder="Categoria" aria-label="default input example">
+            <span id="s_cate" style="display: none;">Falta la categoria del libro</span>
+            <br>
             <label for="desc" class="form-label">Ingrese descripcion del libro</label> <br>
             <input class="form-control" type="text" id="desc" placeholder="Descripcion" aria-label="default input example">
             <span id="s_desc" style="display: none;">Falta la descripcion del libro</span>
@@ -110,6 +114,25 @@
         </form>
     </div>
 </div>
+
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" style="width: 400px; height: 350px; ">
+    <div id="carritoCompra">          
+      <ui id="listaLibros"></ui>
+      <br>
+      <span id="span_total" style="display: none;"></span>
+      <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
+      
+    </div>
+  </div>
+</div>
+<script src="carrito.js"></script>
 <script src="administrar.js"></script>
 <footer>
    <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
