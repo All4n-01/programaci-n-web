@@ -47,9 +47,9 @@
             
           </ul>
           <form class="d-flex" role="search">
-            
-            <input class="form-control me-2" type="search" placeholder="Busque su libro" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">
+            <input class="form-control me-2" id="in_buscar" type="text" list="sugerenciasList" placeholder="Buscar libros" aria-label="Search">
+            <datalist id="sugerenciasList"></datalist>
+            <button id="btn_buscar" class="btn btn-outline-success" type="button" onclick="mostrarResultado((in_buscar).value)">
               BUSCAR<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
             </svg></button>
@@ -79,6 +79,8 @@
       </div>
     </nav>
 
+    <ul id="sugerencias"></ul>
+
     <!--CARRUSEL-->
 
     <div class="container pt-4">
@@ -90,61 +92,11 @@
 
 
     <div id="carouselExampleAutoplaying" class="carousel slide mt-2 " data-bs-ride="carousel">
-      <div class="carousel-inner ">
-        <div class="carousel-item active ms-5  ">
-          <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-            <img src="img/libro1.jpg" class="d-block w-100 position: relative " height="200" alt="...">
-            <div class="nombrelibro">
-                <h5>Alas de hiero</h5>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item ms-5  ">
-          <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-            <img src="img/libro2.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
-            <div class="nombrelibro">
-                <h5>En agosto nos vemos</h5>
-                
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item ms-5  ">
-          <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-            <img src="img/libro3.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
-            <div class="nombrelibro">
-                <h5>Habitos atomicos</h5>
-                
-            </div>
-          </div>
-        </div>
-      <div class="carousel-item ms-5  ">
-        <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-        <img src="img/libro4.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
-        <div class="nombrelibro">
-            <h5>El principito</h5>
-            
-          </div>
-        </div>
+      
+      <div id="carrusel_li" class="carousel-inner "> 
+
       </div>
-      <div class="carousel-item ms-5  ">
-        <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-        <img src="img/libro5.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
-        <div class="nombrelibro">
-            <h5>Terapia para llevar</h5>
-            
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item ms-5  ">
-        <div class="imagentitulo col-4 col-sm-3 col-md-3 col-lg-2">
-          <img src="img/libro6.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
-          <div class="nombrelibro">
-            <h5>Honor y traicion</h5>
-            
-          </div>
-        </div>
-      </div>
-      </div>
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -155,21 +107,19 @@
       </button>
     </div>
     
-    <script>
-      var items = document.querySelectorAll('.carousel .carousel-item')
-      items.forEach((e) => {
-        const slide = 4;
-        let next = e.nextElementSibling;
-        for (var i = 0;i < slide;i++){
-          if (!next){
-            next = items[0]
-          }
-          let clonechild = next.cloneNode(true)
-          e.appendChild(clonechild.children[0])
-          next = next.nextElementSibling
-        }
-      })
-    </script>
+    <!--resultado busqueda-->
+    <div id="BUSCADOR" style="display: none;">
+      <div class="container pt-4">
+        <div >
+          <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >Resultado De La Busqueda</span>
+          <div class="home-line"></div>
+        </div>
+      </div>
+
+      <div id="datos_re" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
+
+      </div>
+    </div>
     
     <!--cards de libros-->
     <div class="container pt-4">
@@ -179,74 +129,12 @@
       </div>
     </div>
 
-    <div id="card" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
-      <div id="libro1" class="card" style=" margin: 15px; width: 250px; float:left;">
-        <img id="img1" src="img/libro1.jpg" class="card-img-top" alt="...">
-        <div class="card-body" >
-          <h5 id="titulo1" class="card-title" >Alas de hierro</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('Alas de hierro', 'img/libro1.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-              Agregar
-          </button>
-        </div>
-      </div>
+    <div id="datos_li" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
 
-      <div class="card" style=" margin: 15px; width: 250px; float:left;">
-        <img id="img2" src="img/libro2.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 id="titulo2" class="card-title">En agosto nos vemos</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('En agosto nos vemos', 'img/libro2.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Agregar
-        </button>
-        </div>
-      </div>
+    </div>
 
-      <div class="card" style="margin: 15px; width: 250px ; float:left;">
-        <img id="img3" src="img/libro3.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 id="titulo3" class="card-title">Hábitos atómicos</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('Hábitos atómicos', 'img/libro3.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Agregar
-        </button>
-        </div>
-      </div>
-      
-      <div class="card" style="margin: 15px; width: 250px ; float:left;">
-        <img id="img4" src="img/libro4.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 id="titulo4" class="card-title">El principito</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('El principito', 'img/libro4.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Agregar
-          </button>
-        </div>
-      </div>
 
-      <div class="card" style="margin: 15px; width: 250px ; float:left;">
-        <img id="img5" src="img/libro5.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 id="titulo5" class="card-title">Terapia para llevar</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('Terapia para llevar', 'img/libro5.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Agregar
-          </button>        
-        </div>
-      </div>
-      
-      <div class="card col-6 col-md-4 col-lg-2" style="margin: 15px; width: 250px ; float:left;">
-        <img id="img5" src="img/libro6.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 id="titulo5" class="card-title">Honor y traiccion</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut nunc dapibus, tempor magna nec.</p>
-          <button id="btnLibro1"  onclick="agregarAlCarrito('Honor y traiccion', 'img/libro6.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Agregar
-          </button>        
-        </div>
-      </div>
-      
-  </div>
+    
 
 
     
@@ -261,6 +149,7 @@
         <div id="carritoCompra">          
           <ui id="listaLibros"></ui>
           <br>
+          <span id="span_total" style="display: none;"></span>
           <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
           
         </div>
@@ -300,93 +189,19 @@
         }
     </script>
 
-  <script>
-    document.getElementById("btnEliminar").addEventListener("click", function() {
-  
-    var imagenCarrito = document.getElementById("imgCarri")
-    var textoCarrito = document.getElementById("tituloCarri");
-    textoCarrito.innerHTML = "";
-    imagenCarrito.src = "img/carrito.png";
-
-    ocultarBoton();
-  });
-  
-  </script>
 
     
-  <script>
-    var librosSeleccionados = [];
-    function mostrarComprar(){
-      var btnComprar = document.getElementById("comprar");
-      btnComprar.style.display = 'block';
-    }
-
-    function agregarAlCarrito(titulo, imagen) {
-      var libro = { titulo: titulo, imagen: imagen };
-      librosSeleccionados.push(libro);
-      mostrarLibrosEnCarrito();
-    }
-
-    function mostrarLibrosEnCarrito() {
-    var listaLibros = document.getElementById("listaLibros");
-    listaLibros.innerHTML = "";
-    librosSeleccionados.forEach(function(libro, index) {
-        var li = document.createElement("li");
-        var div = document.createElement("div");
-        div.style.display = "flex"; 
-        var img = document.createElement("img");
-        img.src = libro.imagen;
-        img.alt = libro.titulo;
-        img.style.width = "80px";
-        img.style.height = "100px";
-        var span = document.createElement("span");
-        span.textContent = libro.titulo;
-        span.style.margin = '10px'
-        var btnEliminar = document.createElement("button");
-        btnEliminar.style.height = '45px'
-        btnEliminar.classList = 'btn btn-secondary'
-        btnEliminar.style.float = 'inline-end';
-        btnEliminar.textContent = "Eliminar";
-        btnEliminar.addEventListener("click", function() {
-          eliminarDelCarrito(index);});
-        div.appendChild(img);
-        div.appendChild(span);
-        div.appendChild(btnEliminar);
-        li.appendChild(div);
-        listaLibros.appendChild(li);
-        mostrarComprar();
-        
-
-      });
-      var btnComprar = document.getElementById("comprar");
-      if (librosSeleccionados.length === 0) {
-        btnComprar.style.display = "none";
-      } else {
-        btnComprar.style.display = "block";
-      }
-
-      var span = document.getElementById("notiCompra");
-      if (librosSeleccionados.length === 0) {
-        span.style.display = "none";
-      } else {
-        span.style.display = "block";
-      }
-    
-    }
-    function eliminarDelCarrito(index) {
-    librosSeleccionados.splice(index, 1); 
-    mostrarLibrosEnCarrito(); 
-    }
-    
-
-
-  </script>
-
 
 
 </div>
+
 <footer>
    <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
 </footer>
+<script src="buscar.js"></script>
+<script src="libros.js"></script>
+<script src="carusel.js"></script>
+<script src="carrito.js"></script>
+<script src="pagos.js"></script>
 </body>
 </html>
