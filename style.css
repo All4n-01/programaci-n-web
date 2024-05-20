@@ -2,8 +2,6 @@
     background-color: #F2EBDF;
 }
 
-/* carrusel */
-
 .carousel-inner{
     display: flex;
     width: 96%;
@@ -57,30 +55,6 @@
 .oculto{
     display: none;
 }
-
-/* titulos */
-
-.home__title-container {
-    width: 90%;
-    margin: 30px auto;
-}
-
-
-
-.home-line{
-    width: 100%;
-    height: 0;
-    border: 1px solid #3c7780;
-    margin: 3px;
-    display: inline-block;
-    background-color: #3c7780;
-}
-
-
-.card-body h5{
-    color: darkblue;
-}
-
 
 footer {
     background-color: #333;
