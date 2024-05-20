@@ -42,9 +42,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="contactos.html">Contáctanos</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="administrar.html">Administrar</a>
-              </li>
               
             </ul>
             <form class="d-flex" role="search">
@@ -231,6 +228,18 @@
 
     <!--CARRITO COMPRA-->
 
+    <div class="container pt-4">
+      <div >
+        <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >LOS LIBROS</span>
+        <div class="home-line"></div>
+      </div>
+    </div>
+
+    <button type="button" id="actu"> Actualizar</button>
+    <div id="datos_li" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
+
+    </div>
+
     <div id="cardL" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
 
         <div class="card categoria-libro literatura-romantica" style="margin: 15px; width: 250px; float:left;">
@@ -295,19 +304,20 @@
 
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body" style="width: 400px; height: 350px; ">
-              <div id="carritoCompra">          
-                <ui id="listaLibros"></ui>
-                <br>
-                <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
-                
-              </div>
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body" style="width: 400px; height: 350px; ">
+            <div id="carritoCompra">          
+              <ui id="listaLibros"></ui>
+              <br>
+              <span id="span_total" style="display: none;"></span>
+              <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
+              
             </div>
           </div>
+        </div>
     
               
           <div class="offcanvas offcanvas-start" tabindex="-1" id="carritoVacio" aria-labelledby="carritoVaciolabel" style="background-color: bisque;">
@@ -342,87 +352,7 @@
               }
           </script>
     
-        <script>
-          document.getElementById("btnEliminar").addEventListener("click", function() {
         
-          var imagenCarrito = document.getElementById("imgCarri")
-          var textoCarrito = document.getElementById("tituloCarri");
-          textoCarrito.innerHTML = "";
-          imagenCarrito.src = "img/carrito.png";
-    
-          ocultarBoton();
-        });
-        
-        </script>
-    
-          
-        <script>
-          var librosSeleccionados = [];
-          function mostrarComprar(){
-            var btnComprar = document.getElementById("comprar");
-            btnComprar.style.display = 'block';
-          }
-    
-          function agregarAlCarrito(titulo, imagen) {
-            var libro = { titulo: titulo, imagen: imagen };
-            librosSeleccionados.push(libro);
-            mostrarLibrosEnCarrito();
-          }
-      
-          function mostrarLibrosEnCarrito() {
-          var listaLibros = document.getElementById("listaLibros");
-          listaLibros.innerHTML = "";
-          librosSeleccionados.forEach(function(libro, index) {
-              var li = document.createElement("li");
-              var div = document.createElement("div");
-              div.style.display = "flex"; 
-              var img = document.createElement("img");
-              img.src = libro.imagen;
-              img.alt = libro.titulo;
-              img.style.width = "80px";
-              img.style.height = "100px";
-              var span = document.createElement("span");
-              span.textContent = libro.titulo;
-              span.style.margin = '10px'
-              var btnEliminar = document.createElement("button");
-              btnEliminar.style.height = '45px'
-              btnEliminar.classList = 'btn btn-secondary'
-              btnEliminar.style.float = 'inline-end';
-              btnEliminar.textContent = "Eliminar";
-              btnEliminar.addEventListener("click", function() {
-                eliminarDelCarrito(index);});
-              div.appendChild(img);
-              div.appendChild(span);
-              div.appendChild(btnEliminar);
-              li.appendChild(div);
-              listaLibros.appendChild(li);
-              mostrarComprar();
-              
-    
-            });
-            var btnComprar = document.getElementById("comprar");
-            if (librosSeleccionados.length === 0) {
-              btnComprar.style.display = "none";
-            } else {
-              btnComprar.style.display = "block";
-            }
-    
-            var span = document.getElementById("notiCompra");
-            if (librosSeleccionados.length === 0) {
-              span.style.display = "none";
-            } else {
-              span.style.display = "block";
-            }
-          
-          }
-          function eliminarDelCarrito(index) {
-          librosSeleccionados.splice(index, 1); 
-          mostrarLibrosEnCarrito(); 
-          }
-          
-    
-    
-        </script>
 
         <script>
             function mostrarLibrosCategoria(categoria) {
@@ -470,9 +400,10 @@
             });
         </script>
     </div>
+    <script src="cate_libro.js"></script>
+    <script src="carrito.js"></script>
 <footer>
       <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
 </footer>
-    
 </body>
 </html>
