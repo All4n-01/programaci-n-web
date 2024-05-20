@@ -37,9 +37,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="contactos.html">Contáctanos</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="administrar.html">Administrar</a>
-              </li>
               
             </ul>
             <form class="d-flex" role="search">
@@ -197,88 +194,11 @@
         }
     </script>
 
-  <script>
-    document.getElementById("btnEliminar").addEventListener("click", function() {
-  
-    var imagenCarrito = document.getElementById("imgCarri")
-    var textoCarrito = document.getElementById("tituloCarri");
-    textoCarrito.innerHTML = "";
-    imagenCarrito.src = "img/carrito.png";
 
-    ocultarBoton();
-  });
-  
-  </script>
 
     
-  <script>
-    var librosSeleccionados = [];
-    function mostrarComprar(){
-      var btnComprar = document.getElementById("comprar");
-      btnComprar.style.display = 'block';
-    }
-
-    function agregarAlCarrito(titulo, imagen) {
-      var libro = { titulo: titulo, imagen: imagen };
-      librosSeleccionados.push(libro);
-      mostrarLibrosEnCarrito();
-    }
-
-    function mostrarLibrosEnCarrito() {
-    var listaLibros = document.getElementById("listaLibros");
-    listaLibros.innerHTML = "";
-    librosSeleccionados.forEach(function(libro, index) {
-        var li = document.createElement("li");
-        var div = document.createElement("div");
-        div.style.display = "flex"; 
-        var img = document.createElement("img");
-        img.src = libro.imagen;
-        img.alt = libro.titulo;
-        img.style.width = "80px";
-        img.style.height = "100px";
-        var span = document.createElement("span");
-        span.textContent = libro.titulo;
-        span.style.margin = '10px'
-        var btnEliminar = document.createElement("button");
-        btnEliminar.style.height = '45px'
-        btnEliminar.classList = 'btn btn-secondary'
-        btnEliminar.style.float = 'inline-end';
-        btnEliminar.textContent = "Eliminar";
-        btnEliminar.addEventListener("click", function() {
-          eliminarDelCarrito(index);});
-        div.appendChild(img);
-        div.appendChild(span);
-        div.appendChild(btnEliminar);
-        li.appendChild(div);
-        listaLibros.appendChild(li);
-        mostrarComprar();
-        
-
-      });
-      var btnComprar = document.getElementById("comprar");
-      if (librosSeleccionados.length === 0) {
-        btnComprar.style.display = "none";
-      } else {
-        btnComprar.style.display = "block";
-      }
-
-      var span = document.getElementById("notiCompra");
-      if (librosSeleccionados.length === 0) {
-        span.style.display = "none";
-      } else {
-        span.style.display = "block";
-      }
-    
-    }
-    function eliminarDelCarrito(index) {
-    librosSeleccionados.splice(index, 1); 
-    mostrarLibrosEnCarrito(); 
-    }
-    
-
-
-  </script>
   
+  <script src="carrito.js"></script>
   <footer>
       <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
   </footer>
