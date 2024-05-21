@@ -63,6 +63,7 @@ function Mostrar(){
         
         div.appendChild(div2);
         listaHTML.appendChild(div);
+        console.log(libro)
     });
 }
 
