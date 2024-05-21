@@ -10,7 +10,8 @@ function Sugerencias(valorBusqueda) {
 
 document.addEventListener("DOMContentLoaded", function() {
     var inputBuscar = document.getElementById("in_buscar");
-    
+    var btnBuscar = document.getElementById("btn_buscar");
+
     inputBuscar.addEventListener("input", function() {
         var valorBusqueda = inputBuscar.value.toLowerCase();
         if (valorBusqueda === '') {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
             Busqueda.style.display = 'none';
         }
         
-        var nombreBusqueda = document.getElementById("input_nombre").value;
+        var nombreBusqueda = document.getElementById("in_buscar").value;
         
         var sugerencias = Sugerencias(valorBusqueda);
         
@@ -30,9 +31,30 @@ document.addEventListener("DOMContentLoaded", function() {
             option.value = sugerencia;
             sugerenciasList.appendChild(option);
         });
+    
+        btnBuscar.addEventListener("click", function() {
+        mostrarResultado(nombreBusqueda);
+        });
 
+    });
+
+    btnBuscar.addEventListener("click", function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe al presionar el botón
+        var nombreBusqueda = inputBuscar.value.toLowerCase();
         mostrarResultado(nombreBusqueda);
     });
+
+    
+
+    inputBuscar.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evitar que el formulario se envíe al presionar Enter
+            var nombreBusqueda = document.getElementById("in_buscar").value.toLowerCase();
+            mostrarResultado(nombreBusqueda);
+        }
+    });
+
+    
 });
 
 function mostrarResultado(nombreBusqueda) { 
