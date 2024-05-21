@@ -46,11 +46,12 @@
             </ul>
             <form class="d-flex" role="search">
               
-              <input class="form-control me-2" type="search" placeholder="Busque su libro" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">
-                BUSCAR<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-              </svg></button>
+              <input class="form-control me-2" id="in_buscar" type="text" list="sugerenciasList" placeholder="Buscar libros" aria-label="Search">
+            <datalist id="sugerenciasList"></datalist>
+            <button id="btn_buscar" class="btn btn-outline-success" type="button" onclick="mostrarResultado((in_buscar).value)">
+              BUSCAR<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg></button>
 
             </form>
             <div class="d-grid gap-2 d-md-block" style="margin-left: 5px; margin-right: 5px;">
@@ -94,9 +95,8 @@
                 <img id="imgCf" src="img categorias/ciencia ficcion.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title="Alas de hierro">
                 <div class="card-body">
                     <h5 class="card-title">Ciencia Ficcion.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('ciencia-ficcion');" class="btn btn-primary" type="button" >
-                        Filtrar
-                    </button> 
+                    <button id="btnCf" onclick="mostrarLibrosCategoria('Ciencia Ficción');" class="btn btn-primary" type="button">Filtrar</button>
+
                 </div>
               </div>
             
@@ -107,7 +107,7 @@
                 <img id="imgNov" src="img categorias/clasica.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
                 <div class="card-body">
                     <h5 class="card-title">Novela.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('novela');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Novela');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
                 </div>
@@ -119,7 +119,7 @@
                 <img id="imgContem" src="img categorias/contemporanea.jpg" class="d-block w-100 position: relative;" height="200" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">contemporanea.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('contemporanea');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Contemporánea');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
 
@@ -148,7 +148,7 @@
                 <img id="imgInfantil" src="img categorias/literatura infantil.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
                 <div class="card-body">
                     <h5 class="card-title">literatura infantil.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('literatura-infantil');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Literatura infantil');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
                 </div>
@@ -162,7 +162,7 @@
                 <img id="imgRomant" src="img categorias/romantico.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
                 <div class="card-body">
                     <h5 class="card-title">literatura romantica.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('literatura-romantica');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Literatura Romántica');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
                 </div>
@@ -176,7 +176,7 @@
                 <img id="imgAutoay" src="img categorias/autoayuda.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
                 <div class="card-body">
                     <h5 class="card-title">Libro autoayuda.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('autoayuda');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Autoayuda');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
                 </div>
@@ -189,7 +189,7 @@
                 <img id="imgBio" src="img categorias/biografias.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
                 <div class="card-body">
                     <h5 class="card-title">Biografias.</h5>
-                    <button id="btnCf"  onclick="mostrarLibrosCategoria('biografias');" class="btn btn-primary" type="button" >
+                    <button id="btnCf"  onclick="mostrarLibrosCategoria('Biografias');" class="btn btn-primary" type="button" >
                         Filtrar
                     </button>
                 </div>
@@ -223,101 +223,60 @@
         })
       </script>
 
+     <!--resultado busqueda-->
+     <div id="BUSCADOR" style="display: none;">
+      <div class="container pt-4">
+        <div >
+          <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >Resultado De La Busqueda</span>
+          <div class="home-line"></div>
+        </div>
+      </div>
 
+      <div id="datos_re" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
 
+      </div>
+    </div>
 
-    <!--CARRITO COMPRA-->
+    <!--libros filtrados-->
+    
 
     <div class="container pt-4">
       <div >
-        <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >LOS LIBROS</span>
+        <span style="font-size: 200%; font-family: Monserrat; color: darkblue;" >LOS LIBROS:  </span>
+
+        <button type="button" id="actu" class="btn btn-primary "> Restablecer </button>
         <div class="home-line"></div>
       </div>
     </div>
 
-    <button type="button" id="actu"> Actualizar</button>
     <div id="datos_li" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
 
     </div>
 
-    <div id="cardL" class="row" style="margin: 22px; margin-left: 22px ; margin-right: 22px;">
+    <!--CARRITO COMPRA-->
+    <div>
 
-        <div class="card categoria-libro literatura-romantica" style="margin: 15px; width: 250px; float:left;">
-            <img id="img1" src="img/libro1.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo1" class="card-title" >Alas de hierro</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('Alas de hierro', 'img/libro1.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>            
-            </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-
-        <div class="card categoria-libro novela" style="margin: 15px; width: 250px; float:left;">
-            <img id="img2" src="img/libro2.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo2" class="card-title">En agosto nos vemos</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('Hábitos atómicos', 'img/libro3.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>           
-            </div>
-        </div>
-
-        <div class="card categoria-libro autoayuda" style="margin: 15px; width: 250px; float:left;">
-            <img id="img3" src="img/libro3.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo3" class="card-title">Hábitos atómicos</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('En agosto nos vemos', 'img/libro2.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>           
-            </div>
-        </div>
-
-        <div class="card categoria-libro literatura-infantil" style="margin: 15px; width: 250px; float:left;">
-            <img id="img4" src="img/libro4.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo4" class="card-title">El principito</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('El principito', 'img/libro4.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>         
-            </div>
-        </div>
-
-        <div class="card categoria-libro autoayuda" style="margin: 15px; width: 250px; float:left;">
-            <img id="img5" src="img/libro5.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo5" class="card-title">Terapia para llevar</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('Terapia para llevar', 'img/libro5.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>     
-            </div>
-        </div>
-
-        <div class="card categoria-libro biografias" style="margin: 15px; width: 250px; float:left;">
-            <img id="img6" src="img/libro6.jpg" class="d-block w-100 position: relative;" height="200" alt="..." title=" ">
-            <div class="card-body">
-                <h5 id="titulo5" class="card-title">Honor y traicion</h5>
-                <button id="btnLibro1"  onclick="agregarAlCarrito('Honor y traicion', 'img/libro6.jpg')" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    Agregar
-                </button>     
-            </div>
-        </div>
-
-
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body" style="width: 400px; height: 350px; ">
-            <div id="carritoCompra">          
-              <ui id="listaLibros"></ui>
-              <br>
-              <span id="span_total" style="display: none;"></span>
-              <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
-              
-            </div>
+        <div class="offcanvas-body" style="width: 400px; height: 350px; ">
+          <div id="carritoCompra">
+            <select id="selectDivisa" class="form-select">
+              <option value="clp">Pesos chilenos (CLP)</option>
+              <option value="usd">Dólares estadounidenses (USD)</option>
+              <option value="eur">Euros (EUR)</option>
+            </select>
+                     
+            <ui id="listaLibros"></ui>
+            <br>
+            <span id="span_total" style="display: none;"></span>
+            <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
+            
           </div>
         </div>
+      </div>
     
               
           <div class="offcanvas offcanvas-start" tabindex="-1" id="carritoVacio" aria-labelledby="carritoVaciolabel" style="background-color: bisque;">
@@ -354,54 +313,13 @@
     
         
 
-        <script>
-            function mostrarLibrosCategoria(categoria) {
-                var libros = document.querySelectorAll('.categoria-libro');
-                libros.forEach(function(libro) {
-                    if (libro.classList.contains(categoria)) {
-                        libro.style.display = 'block';
-                    } else {
-                        libro.style.display = 'none';
-                    }
-                });
-            }
-        
-            document.getElementById('categoria-ciencia-ficcion').addEventListener('click', function() {
-                mostrarLibrosCategoria('ciencia-ficcion');
-            });
-            document.getElementById('categoria-autoayuda').addEventListener('click', function() {
-                mostrarLibrosCategoria('autoayuda');
-            });
-            document.getElementById('categoria-literatura-infantil').addEventListener('click', function() {
-                mostrarLibrosCategoria('literatura-infantil');
-            });
-            document.getElementById('categoria-novela').addEventListener('click', function() {
-                mostrarLibrosCategoria('novela');
-            });
-
-            document.getElementById('imgCf').addEventListener('click', function() {
-            mostrarLibrosCategoria('ciencia-ficcion');
-            });
-
-            document.getElementById('imgNov').addEventListener('click', function() {
-            mostrarLibrosCategoria('novela');
-            });
-
-            document.getElementById('imgAutoay').addEventListener('click', function() {
-            mostrarLibrosCategoria('autoayuda');
-            });
-
-            document.getElementById('imgInfantil').addEventListener('click', function() {
-            mostrarLibrosCategoria('literatura-infantil');
-            });
-
-            document.getElementById('imgRomant').addEventListener('click', function() {
-            mostrarLibrosCategoria('literatura-romantica');
-            });
-        </script>
+       
     </div>
+    <script src="buscar_cat.js"></script>
+    <script src="categoria.js"></script>
     <script src="cate_libro.js"></script>
     <script src="carrito.js"></script>
+    <script src="pagos.js"></script>
 <footer>
       <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
 </footer>
