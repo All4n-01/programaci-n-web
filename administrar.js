@@ -3,7 +3,41 @@
     crossorigin="anonymous"
  src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"
 
-$(document).ready(function(){
+ function Sugerencias(valorBusqueda) {
+    var listaLibros = JSON.parse(localStorage.getItem("libros")) || [];
+    
+    return listaLibros.filter(function(libro) {
+        return libro.Categoria.toLowerCase().includes(valorBusqueda);
+    }).map(function(libro) {
+        return libro.Categoria;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var inputBuscar = document.getElementById("categoria");
+    
+        inputBuscar.addEventListener("input", function() {
+        var valorBusqueda = inputBuscar.value.toLowerCase();
+     
+        var nombreBusqueda = document.getElementById("categoria").value;
+        
+        var sugerencias = Sugerencias(valorBusqueda);
+        
+        var sugerenciasList = document.getElementById("sugerenciasList");
+        sugerenciasList.innerHTML = "";
+        
+        sugerencias.forEach(function(sugerencia) {
+            var option = document.createElement("option");
+            option.value = sugerencia;
+            sugerenciasList.appendChild(option);
+        });
+
+        mostrarResultado(nombreBusqueda);
+    });
+});
+
+
+ $(document).ready(function(){
     $('#formulario').submit(function(e) {
         e.preventDefault();
         var imagen = document.getElementById("imagen").value;
