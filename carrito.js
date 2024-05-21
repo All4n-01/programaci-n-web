@@ -6,9 +6,14 @@ function agregarAlCarrito(index) {
         return lib.Nombre === libro.Nombre && lib.Imagen === libro.Imagen;
     });
 
-    if (!libroExistente) {
-        librosSeleccionados.push(libro);
-    }
+    if (libroExistente) {
+      // Si el libro ya está en el carrito, aumentar su cantidad en 1
+      libroExistente.Cantidad++;
+  } else {
+      // Si el libro no está en el carrito, agregarlo con cantidad 1
+      libro.Cantidad = 1;
+      librosSeleccionados.push(libro);
+  }
 
     mostrarLibrosEnCarrito();
 }
@@ -19,6 +24,12 @@ function agregarAlCarrito(index) {
       var span_Total = document.getElementById("span_total");
       btnComprar.style.display = 'block';
       span_Total.style.display = 'block';
+      btnComprar.removeEventListener("click", mostrarConfirmacionC);
+
+      btnComprar.addEventListener("click", function() {
+        mostrarConfirmacionC();
+
+    });
     }
 
     
@@ -41,22 +52,33 @@ function mostrarLibrosEnCarrito() {
         var in_cant = document.createElement("input");
         var span_Total = document.getElementById("span_total");
         in_cant.type = "number";
+        in_cant.min = 0;
+        in_cant.max = 10;
+        in_cant.value = libro.Cantidad;
         in_cant.placeholder = "Cantidad"
         in_cant.style.width = "88px"
         in_cant.style.height = "50px"
         in_cant.addEventListener("input", function() {
-            var cantidad = in_cant.value;
-            var total = `${libro.Precio}` * cantidad;
-            Total += total; 
-            console.log("Total:", total );
-            console.log("TOTAL:", Total );
-            span_Total.textContent = "Total: $"+Total;
+            var cantidad = parseInt(in_cant.value);
+            if (cantidad > 0 && cantidad <= 10 ) {
+              libro.Cantidad = cantidad;          
+              console.log(libro.Cantidad);    
+              mostrarLibrosEnCarrito(); 
+            } else if(!cantidad || cantidad <= 0 ){
+              eliminarDelCarrito(index);
+              span_Total.style.display = "none";
+            } else {
+              in_cant.value = libro.Cantidad;
+            }
+
+
         });
-        span.textContent = `${libro.Nombre} $${libro.Precio}`
-        span.style.margin = '10px'
+        
+        span.textContent = `${libro.Nombre} $${libro.Precio}`;
+        span.style.margin = '10px';
         var btnEliminar = document.createElement("button");
-        btnEliminar.style.height = '45px'
-        btnEliminar.classList = 'btn btn-secondary'
+        btnEliminar.style.height = '45px';
+        btnEliminar.classList = 'btn btn-secondary';
         btnEliminar.style.float = 'inline-end';
         btnEliminar.textContent = "Eliminar";
         btnEliminar.addEventListener("click", function() {
@@ -67,10 +89,18 @@ function mostrarLibrosEnCarrito() {
         div.appendChild(btnEliminar);
         li.appendChild(div);
         listaLibros.appendChild(li);
-        mostrarComprar();
+        Total += libro.Precio * libro.Cantidad;
+        actualizarDivisa(Total);
+        //mostrarComprar();
         
 
       });
+
+      var span_Total = document.getElementById("span_total");
+      span_Total.textContent = "Total: $" + Total;
+      span_Total.style.display = librosSeleccionados.length > 0 ? 'block' : 'none';
+      mostrarComprar();
+
       var btnComprar = document.getElementById("comprar");
       if (librosSeleccionados.length === 0) {
         btnComprar.style.display = "none";
