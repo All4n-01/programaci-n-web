@@ -146,15 +146,22 @@
       </div>
 
     </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="background-color: bisque;">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito de compras</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body" style="width: 400px; height: 350px; ">
-        <div id="carritoCompra">          
+        <div id="carritoCompra">
+          <select id="selectDivisa" class="form-select">
+            <option value="clp">Pesos chilenos (CLP)</option>
+            <option value="usd">Dólares estadounidenses (USD)</option>
+            <option value="eur">Euros (EUR)</option>
+          </select>
+                   
           <ui id="listaLibros"></ui>
           <br>
+          <span id="span_total" style="display: none;"></span>
           <button id="comprar" type="button" class="btn btn-primary" style="display: none;"> COMPRAR</button>
           
         </div>
@@ -174,6 +181,9 @@
             <br>ESTA VACIO
           </h4>
         </div>
+        
+      </div>
+    </div>
         
       </div>
     </div>
@@ -197,8 +207,10 @@
 
 
     
-  
+  <script src="buscar.js"></script>
+  <script src="libros.js"></script>
   <script src="carrito.js"></script>
+  <script src="pagos.js"></script>
   <footer>
       <p>integrantes Allan Romero, Rocío Rodríguez y Javier San Martín. </p>
   </footer>
