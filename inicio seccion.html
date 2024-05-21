@@ -10,9 +10,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
     <script src="a.js"> </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+
 
   </head>
 <body class="cuerpo" >
@@ -146,7 +149,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body" style="width: 400px; height: 350px; ">
-        <div id="carritoCompra">          
+        <div id="carritoCompra">
+          <select id="selectDivisa" class="form-select">
+            <option value="clp">Pesos chilenos (CLP)</option>
+            <option value="usd">Dólares estadounidenses (USD)</option>
+            <option value="eur">Euros (EUR)</option>
+            <option value="uf">Unidad de fomento chilena (UF)</option>
+          </select>
+                   
           <ui id="listaLibros"></ui>
           <br>
           <span id="span_total" style="display: none;"></span>
