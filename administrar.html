@@ -98,7 +98,18 @@
             <span id="s_nombre" style="display: none;">Falta el nombre del libro</span>
             <br>
             <label for="categoria" class="form-label">Ingrese categoria del libro</label> <br>
-            <input class="form-control" type="text" id="categoria" placeholder="Categoria" aria-label="default input example">
+
+            <select id="categoria" class="form-select" aria-label="Buscar libros" placeholder="Categoria">
+              <option value="" disabled selected>Selecciona una categoría</option>
+              <option value="Ciencia Ficción">Ciencia Ficción</option>
+              <option value="Novela">Novela</option>
+              <option value="Contemporánea">Contemporánea</option>
+              <option value="Literatura Romántica">Literatura romántica</option>
+              <option value="Autoayuda">Autoayuda</option>
+              <option value="Literatura infantil">Literatura infantil</option>
+              <option value="Biografias">Biografias</option>
+              <option value="Poesia">Poesia</option>
+            </select>
             <span id="s_cate" style="display: none;">Falta la categoria del libro</span>
             <br>
             <label for="desc" class="form-label">Ingrese descripcion del libro</label> <br>
@@ -132,6 +143,7 @@
     </div>
   </div>
 </div>
+<script src="buscar.js"></script>
 <script src="carrito.js"></script>
 <script src="administrar.js"></script>
 <footer>
