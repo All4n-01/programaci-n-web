@@ -107,7 +107,7 @@ function Mostrar(){
         div2.appendChild(h5);
         div2.appendChild(p);
         div2.appendChild(p2);
-         div2.appendChild(btnEliminar);
+        // div2.appendChild(btnEliminar);
         div2.appendChild(btnAgregar);
         
         div.appendChild(div2);
