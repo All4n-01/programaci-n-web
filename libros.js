@@ -1,6 +1,53 @@
+src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+crossorigin="anonymous"
+src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"
+var imgSrc = 'img/libro1.jpg'
+    
+var listaLibros = JSON.parse(localStorage.getItem("libros")) || [];
+    
+    if (listaLibros.length === 0) {
+        var imgSrc = 'img/libro1.jpg'
+
+        var libro = {
+        Imagen: imgSrc ,
+        Id : 1,
+        Nombre : 'Alas De Hierro', 
+        Categoria : 'Novela', 
+        Desc: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+        Precio: 13500
+        }
+
+        var listaLibros = JSON.parse(localStorage.getItem("libros")) || [];
+        listaLibros.push(libro);
+        localStorage.setItem("libros", JSON.stringify(listaLibros));
+
+        console.log("Libro guardado:", libro);
+        };
+
+    if (listaLibros.length === 1) {
+        var imgSrc = 'img/libro2.jpg'
+        
+        var libro = {
+        Imagen: imgSrc ,
+        Id : 1,
+        Nombre : 'En Agosto Nos Vemos', 
+        Categoria : 'Novela', 
+        Desc: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+        Precio: 15000
+        }
+
+        var listaLibros = JSON.parse(localStorage.getItem("libros")) || [];
+        listaLibros.push(libro);
+        localStorage.setItem("libros", JSON.stringify(listaLibros));
+
+        console.log("Libro guardado:", libro);
+        };
 
 function Mostrar(){ 
+   
 
+        
     var listaLIbros = JSON.parse(localStorage.getItem("libros")) || []; 
     var listaHTML = document.getElementById("datos_li");
   
@@ -60,7 +107,7 @@ function Mostrar(){
         div2.appendChild(h5);
         div2.appendChild(p);
         div2.appendChild(p2);
-        // div2.appendChild(btnEliminar);
+         div2.appendChild(btnEliminar);
         div2.appendChild(btnAgregar);
         
         div.appendChild(div2);
